@@ -1,4 +1,4 @@
-// pthreads #1: Introduction  by DrBFraser
+// from pthreads #1: Introduction  by DrBFraser
 #include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
@@ -15,12 +15,12 @@ void* sum_runnable(void *arg)
 {
     struct sum_runner_struct *arg_struct =
             (struct sum_runner_struct*) arg;
-    long long limit = *limit_ptr;
-    for (long long i = 0; i < arg_struct->limit; i++)
+    long long limit = arg_struct->limit;
+    arg_struct->answer = 0;
+    for (long long i = 0; i < limit; i++)
     {
-        sum += i;
+        arg_struct->answer += i;
     }
-
     pthread_exit(0);
 }
 
@@ -45,13 +45,12 @@ int main (int argc, char **argv)
 
     //Do Other Stuff Here!
 
-    // Wait until thread has done it's work
+    // Wait until the threads have done their work
 
     for (int i = 0; i < num_args; i++)
     {
         pthread_join(tids[i],NULL);
         printf("Sum is %lld\n",args[i].answer);
     }
-
 
 }

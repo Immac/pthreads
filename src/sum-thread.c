@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
-
 // The sum computed by the background thread
 long long sum = 0;
 
@@ -40,8 +39,15 @@ int main (int argc, char **argv)
     pthread_create(&tid, &attr, sum_runnable, &limit);
 
     //Do Other Stuff Here!
-
+    char *throw = "Doing Work! :(ノºДº)ノ ︵ ⌨  ";
+    char *pickup = "Finished: ⌨  ノ( ゜-゜ノ)";
+    
+	for(int i = 0; i < 500; i++)
+	{
+		fputs(throw,stdout);
+	}
     // Wait until thread has done it's work
     pthread_join(tid,NULL);
-    printf("Sum is %lld\n",sum);
+    printf("\nSum is %lld\n",sum);
+    puts(pickup);
 }

@@ -35,4 +35,7 @@
 
 # Debug files
 *.dSYM/
+
+# Backups
+.~*
 >>>>>>> fd7845c1efde19a4038d9ce5c49bb96fee81600c
