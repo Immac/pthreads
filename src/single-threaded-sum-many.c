@@ -8,6 +8,7 @@ struct sum_runner_struct
 {
         long long limit;
         long long answer;
+	int id;
 };
 
 //Thread function to generate sum of 0 to N
@@ -21,6 +22,7 @@ void* sum_runnable(void *arg)
     {
         arg_struct->answer += i;
     }
+    printf("Thread finished: %d \n",arg_struct->id);
     pthread_exit(0);
 }
 
@@ -37,6 +39,7 @@ int main (int argc, char **argv)
 
     for (int i = 0; i < num_args; i++)
     {
+	args[i].id = i;
         args[i].limit = atoll(argv[i+1]);
         pthread_attr_t attr;
         pthread_attr_init(&attr);

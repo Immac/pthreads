@@ -42,7 +42,7 @@ int main (int argc, char **argv)
     char *throw = "Doing Work! :(ノºДº)ノ ︵ ⌨  ";
     char *pickup = "Finished: ⌨  ノ( ゜-゜ノ)";
     
-	for(int i = 0; i < 500; i++)
+	for(int i = 0; i < 5000; i++)
 	{
 		fputs(throw,stdout);
 	}
